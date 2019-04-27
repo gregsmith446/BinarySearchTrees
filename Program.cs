@@ -4,14 +4,11 @@ namespace _22BinarySearchTrees
 {
     class Node
     {
-        // 2 nodes, left and right
         public Node left;
         public Node right;
 
-        // integer data
         public int data;
 
-        // function that takes data, an integer and adds it to the node = left or right
         public Node(int data)
         {
             this.data = data;
@@ -21,28 +18,21 @@ namespace _22BinarySearchTrees
 
     class Solution
     {
-        // this function counts the # of edges between the tree's root and furthest leaf
-        // then it return the max height of the BST
         static int getHeight(Node root)
         {
-            // check to see if tree is empty
             if (root == null)
             {
                 return -1;
             }
             else
             {
-                // find the height of left and right sides of tree
                 int heightLeft = 1 + getHeight(root.left);
                 int heightRight = 1 + getHeight(root.right);
 
-                // return the left or right sides' height - whichever is larger
                 return (heightLeft > heightRight ? heightLeft : heightRight);
             }
         }
 
-        // this function inserts the nodes into the BST
-        // the logic ensures the nodes are added to the BST correctly
         static Node insert(Node root, int data)
         {
             if (root == null)
@@ -70,11 +60,9 @@ namespace _22BinarySearchTrees
         {
             Node root = null;
 
-            // obtain the num of nodes to expect
             Console.WriteLine("The amount of nodes in the BST: ");
             int T = Int32.Parse(Console.ReadLine());
 
-            // get the nodes and add them to the BST
             Console.WriteLine("Give nodes, hitting enter after each entry");
             while (T-- > 0)
             {
@@ -82,9 +70,8 @@ namespace _22BinarySearchTrees
                 root = insert(root, data);
             }
 
-            // calculate max height of BST + print result
             int height = getHeight(root);
-            Console.WriteLine(height);
+            Console.WriteLine("The maximum height, or longest path of the given binary tree is {0} edges.", height);
         }
     }
 }
